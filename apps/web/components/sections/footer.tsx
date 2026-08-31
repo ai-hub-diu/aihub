@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
+import Image from "next/image";
 
 const columns = [
   {
@@ -53,9 +53,7 @@ export function Footer() {
       <div className="container-hub grid grid-cols-2 gap-10 py-14 sm:grid-cols-3 lg:grid-cols-6">
         <div className="col-span-2 flex flex-col gap-3 lg:col-span-1">
           <Link href="/" className="flex items-center gap-2 font-semibold">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-              <Sparkles className="h-4.5 w-4.5" />
-            </span>
+            <Image src="/logo-mark.png" alt="" width={26} height={26} />
           </Link>
           <p className="text-sm text-muted-foreground">Learn. Work. Build. Grow.</p>
         </div>

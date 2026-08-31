@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -42,7 +43,7 @@ export function Navbar() {
         )}
       >
         <Link href="/" className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-primary" />
+          <Image src="/logo-mark.png" alt="" width={22} height={22} priority />
           <span className="text-[13px] font-semibold tracking-tight">DAFFODIL AI HUB</span>
         </Link>
 
