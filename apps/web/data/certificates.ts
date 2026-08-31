@@ -10,7 +10,7 @@ export const certificates: Certificate[] = [
   {
     id: "DAI-2026-AI-000123",
     courseTitle: "Generative AI Fundamentals",
-    issuedTo: "Alex Rahman",
+    issuedTo: "Huzayfa Talha",
     issuedDate: "August 2026",
     issuer: "AIHUB",
   },

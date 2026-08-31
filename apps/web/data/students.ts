@@ -9,7 +9,7 @@ export type StudentProfile = {
 
 export const students: StudentProfile[] = [
   {
-    name: "Alex Rahman",
+    name: "Huzayfa Talha",
     title: "AI Engineering Student",
     skills: ["Python", "Machine Learning", "React", "AWS"],
     certificates: 4,
