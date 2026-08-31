@@ -132,7 +132,7 @@ export function HowItWorks() {
                 ref={(el) => {
                   cardRefs.current[i] = el;
                 }}
-                className={cn("group flex flex-col items-start gap-3")}
+                className={cn("group flex flex-col items-center gap-3 text-center")}
               >
                 <div
                   ref={(el) => {
