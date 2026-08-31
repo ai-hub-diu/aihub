@@ -8,9 +8,9 @@ import { Connections } from "@/components/three/Connections";
 const labels = ["Courses", "Jobs", "Projects"] as const;
 
 const positions: [number, number, number][] = [
-  [-1.9, 1.0, -0.2],
-  [1.95, 0.55, 0.15],
-  [-0.15, -1.85, 0.1],
+  [-1.55, 0.8, -0.2],
+  [1.6, 0.45, 0.15],
+  [-0.1, -1.5, 0.1],
 ];
 
 export function HubNodes() {
@@ -27,12 +27,12 @@ export function HubNodes() {
   });
 
   return (
-    <group ref={group}>
+    <group ref={group} position={[-0.6, 0, 0]}>
       <Connections nodePositions={positions} />
 
       {/* central hub */}
       <mesh>
-        <icosahedronGeometry args={[0.34, 1]} />
+        <icosahedronGeometry args={[0.24, 1]} />
         <meshStandardMaterial
           color="#147a41"
           emissive="#147a41"
@@ -50,7 +50,7 @@ export function HubNodes() {
             nodeRefs.current[i] = el;
           }}
         >
-          <sphereGeometry args={[0.12, 16, 16]} />
+          <sphereGeometry args={[0.09, 16, 16]} />
           <meshStandardMaterial
             color="#5b5bd6"
             emissive="#5b5bd6"

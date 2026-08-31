@@ -9,7 +9,7 @@ export default function HubScene() {
   return (
     <Canvas
       dpr={[1, 1.5]}
-      camera={{ position: [0, 0, 5.5], fov: 45 }}
+      camera={{ position: [0, 0, 9], fov: 45 }}
       gl={{ antialias: true, alpha: true }}
     >
       <ambientLight intensity={0.55} />
