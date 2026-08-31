@@ -8,10 +8,11 @@ import { Magnetic } from "@/components/magnetic";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { getGsap } from "@/lib/animations/gsap";
+import { cn } from "@/lib/utils";
 
 const flow = ["Industry", "Problem", "Student Talent", "Project", "Product"];
 
-export function IndustrySection() {
+export function IndustrySection({ showHeading = true }: { showHeading?: boolean }) {
   const rowRef = useRef<HTMLDivElement | null>(null);
   const trackRef = useRef<HTMLDivElement | null>(null);
   const lineRef = useRef<HTMLDivElement | null>(null);
@@ -84,14 +85,16 @@ export function IndustrySection() {
   return (
     <section id="industry" className="border-b border-border py-20 sm:py-28">
       <div className="container-hub flex flex-col items-center">
-        <ScrollReveal className="w-full max-w-lg">
-          <span className="tag-mono text-secondary-accent">For industry</span>
-          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Bring a problem. Build a solution.
-          </h2>
-        </ScrollReveal>
+        {showHeading && (
+          <ScrollReveal className="w-full max-w-lg">
+            <span className="tag-mono text-secondary-accent">For industry</span>
+            <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+              Bring a problem. Build a solution.
+            </h2>
+          </ScrollReveal>
+        )}
 
-        <div ref={rowRef} className="relative mt-16 w-full">
+        <div ref={rowRef} className={cn("relative w-full", showHeading ? "mt-16" : "mt-0")}>
           <div ref={trackRef} className="absolute hidden h-px -translate-y-1/2 bg-border sm:block">
             <div ref={lineRef} className="h-px w-full origin-left scale-x-0 bg-secondary-accent" />
           </div>

@@ -58,36 +58,42 @@ export function Hero() {
           </div>
         </div>
 
-        <div data-hero-visual className="relative h-[440px] w-full sm:h-[480px]">
+        <div data-hero-visual className="relative w-full lg:h-[480px]">
+          {/* 3D ecosystem only ever renders at lg+ (see HeroEcosystem); the
+              card layout below switches from a plain mobile stack to the
+              absolute "framing" composition at the same breakpoint so
+              there's no empty reserved space on phones/tablets. */}
           <HeroEcosystem />
 
-          {/* Courses — top-left, mirrors the "Courses" hub node */}
-          <div className="absolute left-0 top-2 w-56 rounded-xl border border-border bg-card/95 p-4 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm sm:w-64">
-            <div className="flex items-center justify-between">
-              <span className="tag-mono text-muted-foreground">Course</span>
-              <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                <Star className="h-3 w-3 fill-primary text-primary" /> 4.9
-              </span>
+          <div className="flex flex-col gap-4 lg:block">
+            {/* Courses — top-left, mirrors the "Courses" hub node */}
+            <div className="w-full rounded-xl border border-border bg-card/95 p-4 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm lg:absolute lg:left-0 lg:top-2 lg:w-64">
+              <div className="flex items-center justify-between">
+                <span className="tag-mono text-muted-foreground">Course</span>
+                <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                  <Star className="h-3 w-3 fill-primary text-primary" /> 4.9
+                </span>
+              </div>
+              <p className="mt-2 text-sm font-semibold">AI Engineering with Python</p>
+              <p className="tag-mono mt-2 text-muted-foreground">08 Weeks · Intermediate</p>
             </div>
-            <p className="mt-2 text-sm font-semibold">AI Engineering with Python</p>
-            <p className="tag-mono mt-2 text-muted-foreground">08 Weeks · Intermediate</p>
-          </div>
 
-          {/* Jobs — right edge, mirrors the "Jobs" hub node */}
-          <div className="absolute right-0 top-[38%] w-56 -translate-y-1/2 rounded-xl border border-border bg-card/95 p-4 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm sm:w-64">
-            <div className="flex items-center justify-between">
-              <span className="tag-mono text-muted-foreground">Job</span>
-              <span className="tag-mono text-secondary-accent">Remote</span>
+            {/* Jobs — right edge, mirrors the "Jobs" hub node */}
+            <div className="w-full rounded-xl border border-border bg-card/95 p-4 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm lg:absolute lg:right-0 lg:top-[38%] lg:w-64 lg:-translate-y-1/2">
+              <div className="flex items-center justify-between">
+                <span className="tag-mono text-muted-foreground">Job</span>
+                <span className="tag-mono text-secondary-accent">Remote</span>
+              </div>
+              <p className="mt-2 text-sm font-semibold">AI/ML Intern</p>
+              <p className="tag-mono mt-2 text-muted-foreground">Python · LLM · AWS</p>
             </div>
-            <p className="mt-2 text-sm font-semibold">AI/ML Intern</p>
-            <p className="tag-mono mt-2 text-muted-foreground">Python · LLM · AWS</p>
-          </div>
 
-          {/* Projects / verified skill — bottom-left, mirrors the "Projects" hub node */}
-          <div className="absolute bottom-2 left-4 flex w-fit items-center gap-2 rounded-xl border border-border bg-card/95 px-4 py-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm sm:left-10">
-            <ShieldCheck className="h-4 w-4 text-primary" />
-            <span className="text-sm font-medium">Skill Verified</span>
-            <span className="tag-mono text-muted-foreground">Python</span>
+            {/* Projects / verified skill — bottom-left, mirrors the "Projects" hub node */}
+            <div className="flex w-fit items-center gap-2 rounded-xl border border-border bg-card/95 px-4 py-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm lg:absolute lg:bottom-2 lg:left-10">
+              <ShieldCheck className="h-4 w-4 text-primary" />
+              <span className="text-sm font-medium">Skill Verified</span>
+              <span className="tag-mono text-muted-foreground">Python</span>
+            </div>
           </div>
         </div>
       </div>

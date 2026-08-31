@@ -21,7 +21,7 @@ export default function IndustryPage() {
           </h1>
         </div>
       </section>
-      <IndustrySection />
+      <IndustrySection showHeading={false} />
       <ProductsSection />
       <WorldsSection />
     </>
