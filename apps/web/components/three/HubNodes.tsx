@@ -32,7 +32,7 @@ export function HubNodes() {
 
       {/* central hub */}
       <mesh>
-        <icosahedronGeometry args={[0.5, 1]} />
+        <icosahedronGeometry args={[0.34, 1]} />
         <meshStandardMaterial
           color="#147a41"
           emissive="#147a41"

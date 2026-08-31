@@ -58,35 +58,36 @@ export function Hero() {
           </div>
         </div>
 
-        <div data-hero-visual className="relative flex items-center justify-center">
+        <div data-hero-visual className="relative h-[440px] w-full sm:h-[480px]">
           <HeroEcosystem />
 
-          <div className="relative w-full max-w-sm">
-            <div className="rounded-xl border border-border bg-card/95 p-4 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm">
-              <div className="flex items-center justify-between">
-                <span className="tag-mono text-muted-foreground">Course</span>
-                <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <Star className="h-3 w-3 fill-primary text-primary" /> 4.9
-                </span>
-              </div>
-              <p className="mt-2 text-sm font-semibold">AI Engineering with Python</p>
-              <p className="tag-mono mt-2 text-muted-foreground">08 Weeks · Intermediate</p>
+          {/* Courses — top-left, mirrors the "Courses" hub node */}
+          <div className="absolute left-0 top-2 w-56 rounded-xl border border-border bg-card/95 p-4 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm sm:w-64">
+            <div className="flex items-center justify-between">
+              <span className="tag-mono text-muted-foreground">Course</span>
+              <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                <Star className="h-3 w-3 fill-primary text-primary" /> 4.9
+              </span>
             </div>
+            <p className="mt-2 text-sm font-semibold">AI Engineering with Python</p>
+            <p className="tag-mono mt-2 text-muted-foreground">08 Weeks · Intermediate</p>
+          </div>
 
-            <div className="ml-10 mt-4 rounded-xl border border-border bg-card/95 p-4 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm">
-              <div className="flex items-center justify-between">
-                <span className="tag-mono text-muted-foreground">Job</span>
-                <span className="tag-mono text-secondary-accent">Remote</span>
-              </div>
-              <p className="mt-2 text-sm font-semibold">AI/ML Intern</p>
-              <p className="tag-mono mt-2 text-muted-foreground">Python · LLM · AWS</p>
+          {/* Jobs — right edge, mirrors the "Jobs" hub node */}
+          <div className="absolute right-0 top-[38%] w-56 -translate-y-1/2 rounded-xl border border-border bg-card/95 p-4 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm sm:w-64">
+            <div className="flex items-center justify-between">
+              <span className="tag-mono text-muted-foreground">Job</span>
+              <span className="tag-mono text-secondary-accent">Remote</span>
             </div>
+            <p className="mt-2 text-sm font-semibold">AI/ML Intern</p>
+            <p className="tag-mono mt-2 text-muted-foreground">Python · LLM · AWS</p>
+          </div>
 
-            <div className="mt-4 flex w-fit items-center gap-2 rounded-xl border border-border bg-card/95 px-4 py-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm">
-              <ShieldCheck className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium">Skill Verified</span>
-              <span className="tag-mono text-muted-foreground">Python</span>
-            </div>
+          {/* Projects / verified skill — bottom-left, mirrors the "Projects" hub node */}
+          <div className="absolute bottom-2 left-4 flex w-fit items-center gap-2 rounded-xl border border-border bg-card/95 px-4 py-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm sm:left-10">
+            <ShieldCheck className="h-4 w-4 text-primary" />
+            <span className="text-sm font-medium">Skill Verified</span>
+            <span className="tag-mono text-muted-foreground">Python</span>
           </div>
         </div>
       </div>
