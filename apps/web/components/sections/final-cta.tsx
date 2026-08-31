@@ -1,22 +1,23 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
 import { ScrollReveal } from "@/components/scroll-reveal";
 
 export function FinalCta() {
   return (
-    <section className="gradient-hero py-20">
+    <section className="gradient-hero dot-grid py-24 sm:py-32">
       <ScrollReveal className="container-hub text-center">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-          Ready to Build Your Future With AI?
+        <h2 className="text-balance text-3xl font-semibold tracking-tight sm:text-4xl">
+          Learn AI. Build what matters.
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-muted-foreground">
-          Learn new skills. Work on real opportunities. Build verified experience.
-        </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Magnetic>
-            <Button size="lg" asChild>
-              <Link href="/courses">Explore Courses</Link>
+            <Button size="lg" className="group" asChild>
+              <Link href="/courses">
+                Explore the Hub
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </Link>
             </Button>
           </Magnetic>
           <Button size="lg" variant="outline" asChild>

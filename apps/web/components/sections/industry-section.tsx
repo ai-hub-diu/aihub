@@ -2,41 +2,24 @@
 
 import Link from "next/link";
 import { useEffect, useRef } from "react";
-import { Target, Users, Hammer } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Magnetic } from "@/components/magnetic";
-import { useScrollReveal } from "@/hooks/use-scroll-reveal";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { getGsap } from "@/lib/animations/gsap";
 
-const cards = [
-  {
-    icon: Target,
-    title: "Post Opportunities",
-    description: "Define the problem, skills and expected outcomes.",
-  },
-  {
-    icon: Users,
-    title: "Find Talent",
-    description: "Discover students based on verified skills and project evidence.",
-  },
-  {
-    icon: Hammer,
-    title: "Build Together",
-    description: "Turn successful student contributions into real solutions.",
-  },
-];
+const flow = ["Industry", "Problem", "Student Talent", "Project", "Product"];
 
 export function IndustrySection() {
-  const gridRef = useScrollReveal<HTMLDivElement>({ stagger: "[data-industry-card]", y: 24, duration: 0.6 });
+  const rowRef = useRef<HTMLDivElement | null>(null);
   const lineRef = useRef<HTMLDivElement | null>(null);
   const reduced = useReducedMotion();
 
   useEffect(() => {
-    const el = gridRef.current;
+    const row = rowRef.current;
     const line = lineRef.current;
-    if (!el || !line || reduced) return;
+    if (!row || !line || reduced) return;
     const { gsap, ScrollTrigger } = getGsap();
 
     const ctx = gsap.context(() => {
@@ -46,66 +29,58 @@ export function IndustrySection() {
         {
           scaleX: 1,
           transformOrigin: "left center",
-          duration: 0.8,
-          delay: 0.3,
+          duration: 0.9,
           ease: "power2.out",
-          scrollTrigger: { trigger: el, start: "top 78%", once: true },
+          scrollTrigger: { trigger: row, start: "top 78%", once: true },
         }
       );
-    }, el);
+    }, row);
 
     return () => {
       ctx.revert();
       ScrollTrigger.getAll().forEach((st) => {
-        if (st.trigger === el) st.kill();
+        if (st.trigger === row) st.kill();
       });
     };
-  }, [gridRef, reduced]);
+  }, [reduced]);
 
   return (
-    <section id="industry" className="border-b border-border bg-card/50 py-20">
+    <section id="industry" className="border-b border-border py-20 sm:py-28">
       <div className="container-hub">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Have an AI Problem? Find the Talent to Solve It.
+        <ScrollReveal className="max-w-lg">
+          <span className="tag-mono text-secondary-accent">For industry</span>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+            Bring a problem. Build a solution.
           </h2>
-          <p className="mt-3 text-muted-foreground">
-            Connect with skilled students, define real-world work opportunities, and discover
-            emerging AI talent.
-          </p>
-        </div>
+        </ScrollReveal>
 
-        <div className="relative mt-12">
+        <div ref={rowRef} className="relative mt-16">
+          <div className="absolute left-0 right-0 top-1.5 hidden h-px bg-border sm:block" />
           <div
             ref={lineRef}
-            className="absolute left-0 right-0 top-[2.75rem] hidden h-px scale-x-0 bg-primary/40 sm:block"
+            className="absolute left-0 right-0 top-1.5 hidden h-px scale-x-0 bg-secondary-accent sm:block"
           />
-          <div ref={gridRef} className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {cards.map((c) => (
-              <div key={c.title} data-industry-card>
-                <Card>
-                  <CardHeader>
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-accent-foreground">
-                      <c.icon className="h-5 w-5" />
-                    </div>
-                    <CardTitle className="pt-2">{c.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="text-sm text-muted-foreground">{c.description}</CardContent>
-                </Card>
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
+            {flow.map((step, i) => (
+              <div key={step} className="flex items-center gap-3 sm:flex-col sm:items-start sm:gap-3">
+                <span className="h-3 w-3 shrink-0 rounded-full border-2 border-secondary-accent bg-background" />
+                <span className="tag-mono text-foreground">
+                  {String(i + 1).padStart(2, "0")} · {step}
+                </span>
               </div>
             ))}
           </div>
         </div>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
+        <div className="mt-14">
           <Magnetic>
             <Button size="lg" asChild>
-              <Link href="/industry">Post an Opportunity</Link>
+              <Link href="/industry" className="group">
+                Work with us
+                <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
+              </Link>
             </Button>
           </Magnetic>
-          <Button size="lg" variant="outline" asChild>
-            <Link href="/industry">Partner With Us</Link>
-          </Button>
         </div>
       </div>
     </section>

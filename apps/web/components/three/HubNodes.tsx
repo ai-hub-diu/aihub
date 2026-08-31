@@ -5,14 +5,12 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Connections } from "@/components/three/Connections";
 
-const labels = ["Courses", "Skills", "Jobs", "Projects", "Products"] as const;
+const labels = ["Courses", "Jobs", "Projects"] as const;
 
 const positions: [number, number, number][] = [
-  [-1.6, 1.1, 0.2],
-  [-1.9, -0.6, -0.3],
-  [1.7, 1.0, -0.2],
-  [1.9, -0.7, 0.3],
-  [0, -1.7, 0],
+  [-1.9, 1.0, -0.2],
+  [1.95, 0.55, 0.15],
+  [-0.15, -1.85, 0.1],
 ];
 
 export function HubNodes() {
@@ -21,10 +19,10 @@ export function HubNodes() {
 
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
-    if (group.current) group.current.rotation.y = t * 0.05;
+    if (group.current) group.current.rotation.y = t * 0.04;
     nodeRefs.current.forEach((mesh, i) => {
       if (!mesh) return;
-      mesh.position.y = positions[i][1] + Math.sin(t * 0.6 + i) * 0.08;
+      mesh.position.y = positions[i][1] + Math.sin(t * 0.55 + i) * 0.09;
     });
   });
 
@@ -34,13 +32,13 @@ export function HubNodes() {
 
       {/* central hub */}
       <mesh>
-        <icosahedronGeometry args={[0.55, 1]} />
+        <icosahedronGeometry args={[0.5, 1]} />
         <meshStandardMaterial
-          color="#16a34a"
-          emissive="#16a34a"
-          emissiveIntensity={0.4}
-          roughness={0.35}
-          metalness={0.1}
+          color="#147a41"
+          emissive="#147a41"
+          emissiveIntensity={0.35}
+          roughness={0.4}
+          metalness={0.05}
         />
       </mesh>
 
@@ -52,12 +50,12 @@ export function HubNodes() {
             nodeRefs.current[i] = el;
           }}
         >
-          <sphereGeometry args={[0.14, 16, 16]} />
+          <sphereGeometry args={[0.12, 16, 16]} />
           <meshStandardMaterial
-            color="#6366f1"
-            emissive="#6366f1"
-            emissiveIntensity={0.5}
-            roughness={0.4}
+            color="#5b5bd6"
+            emissive="#5b5bd6"
+            emissiveIntensity={0.45}
+            roughness={0.45}
           />
         </mesh>
       ))}

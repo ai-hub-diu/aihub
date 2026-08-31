@@ -2,16 +2,15 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const links = [
   { href: "/courses", label: "Courses" },
   { href: "/jobs", label: "Jobs" },
-  { href: "/#how-it-works", label: "How It Works" },
+  { href: "/#loop", label: "How It Works" },
   { href: "/industry", label: "For Industry" },
-  { href: "/certificates/verify", label: "Certificates" },
 ];
 
 export function Navbar() {
@@ -30,21 +29,24 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b transition-colors duration-300",
+        "sticky top-0 z-40 border-b transition-all duration-300",
         scrolled
-          ? "border-border bg-background/80 backdrop-blur-md"
+          ? "border-border bg-background/75 backdrop-blur-md"
           : "border-transparent bg-transparent"
       )}
     >
-      <div className="container-hub flex h-16 items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 font-semibold">
-          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-            <Sparkles className="h-4.5 w-4.5" />
-          </span>
-          <span>AIHUB</span>
+      <div
+        className={cn(
+          "container-hub flex items-center justify-between transition-[height] duration-300",
+          scrolled ? "h-14" : "h-16"
+        )}
+      >
+        <Link href="/" className="flex items-center gap-2">
+          <span className="h-2 w-2 rounded-full bg-primary" />
+          <span className="text-[13px] font-semibold tracking-tight">DAFFODIL AI HUB</span>
         </Link>
 
-        <nav className="hidden items-center gap-7 text-sm font-medium text-muted-foreground lg:flex">
+        <nav className="hidden items-center gap-8 text-[13px] font-medium text-muted-foreground lg:flex">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="transition-colors hover:text-foreground">
               {l.label}
@@ -52,12 +54,15 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-2 lg:flex">
           <Button variant="ghost" size="sm" asChild>
             <Link href="/login">Sign In</Link>
           </Button>
           <Button size="sm" asChild>
-            <Link href="/signup">Join as Student</Link>
+            <Link href="/signup" className="group">
+              Get Started
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+            </Link>
           </Button>
         </div>
 
@@ -67,7 +72,7 @@ export function Navbar() {
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
@@ -89,7 +94,7 @@ export function Navbar() {
                 <Link href="/login">Sign In</Link>
               </Button>
               <Button asChild onClick={() => setOpen(false)}>
-                <Link href="/signup">Join as Student</Link>
+                <Link href="/signup">Get Started</Link>
               </Button>
             </div>
           </nav>

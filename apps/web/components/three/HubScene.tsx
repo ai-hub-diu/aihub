@@ -12,11 +12,11 @@ export default function HubScene() {
       camera={{ position: [0, 0, 5.5], fov: 45 }}
       gl={{ antialias: true, alpha: true }}
     >
-      <ambientLight intensity={0.6} />
-      <pointLight position={[3, 3, 3]} intensity={40} color="#16a34a" />
-      <pointLight position={[-3, -2, -2]} intensity={20} color="#6366f1" />
+      <ambientLight intensity={0.55} />
+      <pointLight position={[3, 3, 3]} intensity={38} color="#147a41" />
+      <pointLight position={[-3, -2, -2]} intensity={18} color="#5b5bd6" />
       <HubNodes />
-      <Particles count={80} />
+      <Particles count={55} />
       <CameraRig />
     </Canvas>
   );

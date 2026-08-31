@@ -4,7 +4,6 @@ import { useRef, useState } from "react";
 import { CheckCircle2, XCircle, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
 import { findCertificate } from "@/data/certificates";
 import { getGsap } from "@/lib/animations/gsap";
 import { useReducedMotion } from "@/hooks/use-reduced-motion";
@@ -39,45 +38,48 @@ export function CertificateVerification() {
   const cert = findCertificate(id);
 
   return (
-    <div className="mx-auto max-w-md rounded-2xl border border-border bg-card p-6 shadow-sm">
+    <div className="mx-auto max-w-sm rounded-2xl border border-border bg-card p-6">
       <form onSubmit={handleVerify} className="flex flex-col gap-3">
-        <Label htmlFor="cert-id">Certificate ID</Label>
+        <label htmlFor="cert-id" className="tag-mono text-muted-foreground">
+          Certificate ID
+        </label>
         <Input
           id="cert-id"
           value={id}
           onChange={(e) => setId(e.target.value)}
           placeholder="DAI-2026-AI-000123"
+          className="font-mono text-sm"
         />
         <Button type="submit" disabled={status === "checking"}>
           {status === "checking" ? (
             <>
-              <Loader2 className="h-4 w-4 animate-spin" /> Checking...
+              <Loader2 className="h-4 w-4 animate-spin" /> Verifying...
             </>
           ) : (
-            "Verify Certificate"
+            "Verify"
           )}
         </Button>
       </form>
 
       {status === "found" && cert && (
-        <div ref={resultRef} className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4">
-          <p className="flex items-center gap-2 text-sm font-semibold text-emerald-700">
-            <CheckCircle2 className="h-4 w-4" /> VERIFIED
+        <div ref={resultRef} className="mt-5 rounded-xl border border-primary/25 bg-accent p-4">
+          <p className="flex items-center gap-2 text-sm font-semibold text-primary">
+            <CheckCircle2 className="h-4 w-4" /> Verified
           </p>
           <p className="mt-2 font-semibold">{cert.courseTitle}</p>
-          <p className="mt-2 text-sm text-muted-foreground">Issued to: {cert.issuedTo}</p>
-          <p className="text-sm text-muted-foreground">Issued: {cert.issuedDate}</p>
-          <p className="text-sm text-muted-foreground">Issued by: {cert.issuer}</p>
+          <p className="tag-mono mt-2 text-muted-foreground">
+            {cert.issuedTo} · {cert.issuedDate}
+          </p>
         </div>
       )}
 
       {status === "not-found" && (
-        <div ref={resultRef} className="mt-5 rounded-xl border border-red-200 bg-red-50 p-4">
-          <p className="flex items-center gap-2 text-sm font-semibold text-red-700">
-            <XCircle className="h-4 w-4" /> No matching certificate found
+        <div ref={resultRef} className="mt-5 rounded-xl border border-border bg-muted p-4">
+          <p className="flex items-center gap-2 text-sm font-semibold text-foreground">
+            <XCircle className="h-4 w-4" /> No matching certificate
           </p>
           <p className="mt-1 text-sm text-muted-foreground">
-            Try DAI-2026-AI-000123 to see a sample verified certificate.
+            Try DAI-2026-AI-000123 for a sample result.
           </p>
         </div>
       )}

@@ -2,19 +2,21 @@
 @import "tw-animate-css";
 
 :root {
-  --background: #fafafa;
-  --foreground: #0f172a;
+  --background: #fbfbfa;
+  --foreground: #0a0a0a;
   --card: #ffffff;
-  --card-foreground: #0f172a;
-  --border: #e5e7eb;
-  --muted: #f4f4f5;
-  --muted-foreground: #6b7280;
-  --primary: #16a34a;
+  --card-foreground: #0a0a0a;
+  --border: #e8e8e6;
+  --border-strong: #d4d4d1;
+  --muted: #f3f3f1;
+  --muted-foreground: #6b6b68;
+  --primary: #147a41;
   --primary-foreground: #ffffff;
-  --accent: #eef2ff;
-  --accent-foreground: #4338ca;
-  --ring: #16a34a;
-  --radius: 0.75rem;
+  --accent: #f0f4f1;
+  --accent-foreground: #147a41;
+  --secondary-accent: #5b5bd6;
+  --ring: #147a41;
+  --radius: 0.85rem;
 }
 
 @theme inline {
@@ -23,25 +25,29 @@
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
   --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-secondary-accent: var(--secondary-accent);
   --color-ring: var(--ring);
   --radius-lg: var(--radius);
   --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 .container-hub {
-  max-width: 80rem;
+  max-width: 76rem;
   margin-inline: auto;
   padding-inline: 1.25rem;
 }
@@ -56,7 +62,26 @@ body {
   text-wrap: balance;
 }
 
+/* system-style monospace label: LIVE / VERIFIED / 08 WEEKS / REMOTE */
+.tag-mono {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* faint dot-grid used behind hero / section moments */
+.dot-grid {
+  background-image: radial-gradient(circle, var(--border-strong) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
 .gradient-hero {
-  background: radial-gradient(1200px 500px at 15% -10%, #dcfce7 0%, transparent 60%),
-    radial-gradient(900px 500px at 100% 0%, #e0e7ff 0%, transparent 55%);
+  background: radial-gradient(900px 420px at 12% -10%, color-mix(in srgb, var(--primary) 8%, transparent) 0%, transparent 60%),
+    radial-gradient(700px 380px at 100% 0%, color-mix(in srgb, var(--secondary-accent) 7%, transparent) 0%, transparent 55%);
+}
+
+.gradient-fade-b {
+  background: linear-gradient(180deg, transparent 0%, var(--background) 100%);
 }

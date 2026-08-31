@@ -3,15 +3,13 @@ import { ScrollReveal } from "@/components/scroll-reveal";
 
 export function CertificateSection() {
   return (
-    <section id="certificates" className="border-b border-border py-20">
+    <section id="certificates" className="border-b border-border bg-muted/40 py-20 sm:py-28">
       <div className="container-hub">
-        <ScrollReveal className="mx-auto max-w-2xl text-center">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Certificates You Can Verify
+        <ScrollReveal className="mx-auto max-w-md text-center">
+          <span className="tag-mono text-primary">Verification</span>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+            Credentials you can verify.
           </h2>
-          <p className="mt-3 text-muted-foreground">
-            Every credential can be verified through AIHUB.
-          </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.15} className="mt-10">

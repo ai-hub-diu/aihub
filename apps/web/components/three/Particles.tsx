@@ -31,7 +31,7 @@ export function Particles({ count = 90 }: { count?: number }) {
       <bufferGeometry>
         <bufferAttribute attach="attributes-position" args={[positions, 3]} />
       </bufferGeometry>
-      <pointsMaterial size={0.02} color="#16a34a" transparent opacity={0.35} sizeAttenuation />
+      <pointsMaterial size={0.018} color="#9a9a94" transparent opacity={0.4} sizeAttenuation />
     </points>
   );
 }
