@@ -5,9 +5,7 @@ import Link from "next/link";
 import { Eye, EyeOff, GraduationCap, ShieldCheck, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { cn } from "@/lib/utils";
 
 type Role = "User" | "Supervisor";
 type Mode = "login" | "signup";
@@ -33,28 +31,24 @@ export function AuthForm({ mode }: { mode: Mode }) {
 
   if (submitted) {
     return (
-      <div className="flex flex-col items-center rounded-2xl border border-border bg-card p-10 text-center shadow-sm">
-        <CheckCircle2 className="h-12 w-12 text-primary" />
-        <p className="mt-4 text-lg font-semibold">
+      <div className="flex w-full max-w-sm flex-col items-center rounded-2xl border border-border bg-card p-10 text-center">
+        <CheckCircle2 className="h-9 w-9 text-primary" />
+        <p className="mt-4 font-semibold">
           {isLogin ? "Signed in" : "Account created"} as {role}
         </p>
-        <p className="mt-1 text-sm text-muted-foreground">
-          This is a demo — no data was sent anywhere.
-        </p>
+        <p className="tag-mono mt-2 text-muted-foreground">Demo · no data was sent anywhere</p>
       </div>
     );
   }
 
   return (
-    <div className="w-full max-w-md rounded-2xl border border-border bg-card p-7 shadow-sm sm:p-9">
-      <div className="text-center">
-        <h1 className="text-2xl font-bold tracking-tight">
+    <div className="w-full max-w-sm rounded-2xl border border-border bg-card p-7 sm:p-8">
+      <div>
+        <h1 className="text-2xl font-semibold tracking-tight">
           {isLogin ? "Welcome back" : "Create your account"}
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          {isLogin
-            ? "Sign in to continue learning, working and building."
-            : "Join AIHUB to start your Learn → Verify → Work → Build → Grow journey."}
+        <p className="mt-1.5 text-sm text-muted-foreground">
+          {isLogin ? "Sign in to continue." : "Join AIHUB in a minute."}
         </p>
       </div>
 
@@ -65,9 +59,9 @@ export function AuthForm({ mode }: { mode: Mode }) {
         </TabsList>
       </Tabs>
 
-      <div className="mt-4 flex items-start gap-2.5 rounded-xl bg-accent px-3.5 py-3 text-accent-foreground">
-        <RoleIcon className="mt-0.5 h-4 w-4 shrink-0" />
-        <p className="text-xs leading-relaxed">{roleCopy[role].blurb}</p>
+      <div className="mt-4 flex items-start gap-2.5 rounded-lg border border-border bg-muted px-3.5 py-3">
+        <RoleIcon className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+        <p className="text-xs leading-relaxed text-muted-foreground">{roleCopy[role].blurb}</p>
       </div>
 
       <form
@@ -79,19 +73,25 @@ export function AuthForm({ mode }: { mode: Mode }) {
       >
         {!isLogin && (
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="name">Full Name</Label>
+            <label htmlFor="name" className="tag-mono text-muted-foreground">
+              Full Name
+            </label>
             <Input id="name" required placeholder="Your full name" />
           </div>
         )}
 
         <div className="flex flex-col gap-1.5">
-          <Label htmlFor="email">Email</Label>
+          <label htmlFor="email" className="tag-mono text-muted-foreground">
+            Email
+          </label>
           <Input id="email" type="email" required placeholder="you@example.com" />
         </div>
 
         <div className="flex flex-col gap-1.5">
           <div className="flex items-center justify-between">
-            <Label htmlFor="password">Password</Label>
+            <label htmlFor="password" className="tag-mono text-muted-foreground">
+              Password
+            </label>
             {isLogin && (
               <Link href="#" className="text-xs font-medium text-primary hover:underline">
                 Forgot password?
@@ -120,8 +120,16 @@ export function AuthForm({ mode }: { mode: Mode }) {
 
         {!isLogin && (
           <div className="flex flex-col gap-1.5">
-            <Label htmlFor="confirm-password">Confirm Password</Label>
-            <Input id="confirm-password" type={showPassword ? "text" : "password"} required minLength={8} placeholder="••••••••" />
+            <label htmlFor="confirm-password" className="tag-mono text-muted-foreground">
+              Confirm Password
+            </label>
+            <Input
+              id="confirm-password"
+              type={showPassword ? "text" : "password"}
+              required
+              minLength={8}
+              placeholder="••••••••"
+            />
           </div>
         )}
 
