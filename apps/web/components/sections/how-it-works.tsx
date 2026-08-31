@@ -121,7 +121,7 @@ export function HowItWorks() {
         </div>
 
         <div ref={rowRef} className="relative mt-16 w-full">
-          <div ref={trackRef} className="absolute hidden h-px -translate-y-1/2 bg-border lg:block">
+          <div ref={trackRef} className="absolute hidden h-px top-[10rem] -translate-y-1/2 bg-border lg:block">
             <div ref={lineRef} className="h-px w-full origin-left scale-x-0 bg-primary" />
           </div>
 
