@@ -1,7 +1,6 @@
 import { Hero } from "@/components/sections/hero";
 import { PlatformStatement } from "@/components/sections/platform-statement";
-import { FeaturedCourses } from "@/components/sections/featured-courses";
-import { FeaturedJobs } from "@/components/sections/featured-jobs";
+import { ChooseYourMove } from "@/components/sections/choose-your-move";
 import { HowItWorks } from "@/components/sections/how-it-works";
 import { SkillPassport } from "@/components/sections/skill-passport";
 import { CertificateSection } from "@/components/sections/certificate-section";
@@ -15,8 +14,7 @@ export default function Home() {
     <>
       <Hero />
       <PlatformStatement />
-      <FeaturedCourses />
-      <FeaturedJobs />
+      <ChooseYourMove />
       <HowItWorks />
       <SkillPassport />
       <CertificateSection />
