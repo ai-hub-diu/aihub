@@ -34,8 +34,8 @@ export function HubNodes() {
       <mesh>
         <icosahedronGeometry args={[0.24, 1]} />
         <meshStandardMaterial
-          color="#147a41"
-          emissive="#147a41"
+          color="#1d4fd8"
+          emissive="#1d4fd8"
           emissiveIntensity={0.35}
           roughness={0.4}
           metalness={0.05}
@@ -52,8 +52,8 @@ export function HubNodes() {
         >
           <sphereGeometry args={[0.09, 16, 16]} />
           <meshStandardMaterial
-            color="#5b5bd6"
-            emissive="#5b5bd6"
+            color="#06b6d4"
+            emissive="#06b6d4"
             emissiveIntensity={0.45}
             roughness={0.45}
           />

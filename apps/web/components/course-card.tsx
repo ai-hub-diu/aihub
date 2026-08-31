@@ -35,7 +35,7 @@ export function CourseCard({ course }: { course: Course }) {
 
           <div className="mt-auto flex items-center justify-between pt-5">
             {course.certificate ? (
-              <span className="flex items-center gap-1 text-xs font-medium text-emerald-700">
+              <span className="flex items-center gap-1 text-xs font-medium text-primary">
                 <ShieldCheck className="h-3.5 w-3.5" /> Certificate Included
               </span>
             ) : (

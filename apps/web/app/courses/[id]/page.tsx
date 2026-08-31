@@ -50,7 +50,7 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ i
             <Users className="h-4 w-4" /> {course.students} students
           </span>
           {course.certificate && (
-            <span className="flex items-center gap-1.5 font-medium text-emerald-700">
+            <span className="flex items-center gap-1.5 font-medium text-primary">
               <ShieldCheck className="h-4 w-4" /> Certificate Included
             </span>
           )}

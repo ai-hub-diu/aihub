@@ -13,8 +13,8 @@ export default function HubScene() {
       gl={{ antialias: true, alpha: true }}
     >
       <ambientLight intensity={0.55} />
-      <pointLight position={[3, 3, 3]} intensity={38} color="#147a41" />
-      <pointLight position={[-3, -2, -2]} intensity={18} color="#5b5bd6" />
+      <pointLight position={[3, 3, 3]} intensity={38} color="#1d4fd8" />
+      <pointLight position={[-3, -2, -2]} intensity={18} color="#06b6d4" />
       <HubNodes />
       <Particles count={55} />
       <CameraRig />

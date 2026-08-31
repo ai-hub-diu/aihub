@@ -10,12 +10,12 @@
   --border-strong: #d4d4d1;
   --muted: #f3f3f1;
   --muted-foreground: #6b6b68;
-  --primary: #147a41;
+  --primary: #1d4fd8;
   --primary-foreground: #ffffff;
-  --accent: #f0f4f1;
-  --accent-foreground: #147a41;
-  --secondary-accent: #5b5bd6;
-  --ring: #147a41;
+  --accent: #eef3ff;
+  --accent-foreground: #1d4fd8;
+  --secondary-accent: #06b6d4;
+  --ring: #1d4fd8;
   --radius: 0.85rem;
 }
 
