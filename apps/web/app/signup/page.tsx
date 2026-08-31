@@ -9,9 +9,9 @@ export const metadata: Metadata = {
 
 export default function SignupPage() {
   return (
-    <section className="grid min-h-[calc(100vh-4rem)] lg:grid-cols-2">
+    <section className="flex min-h-[calc(100vh-4rem)] flex-col lg:grid lg:grid-cols-[1.08fr_1fr]">
       <AuthSidePanel />
-      <div className="flex items-center justify-center px-4 py-16">
+      <div className="flex flex-1 items-center justify-center px-4 py-12 sm:px-6 sm:py-16 lg:px-12">
         <AuthForm mode="signup" />
       </div>
     </section>

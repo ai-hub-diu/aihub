@@ -85,3 +85,43 @@ body {
 .gradient-fade-b {
   background: linear-gradient(180deg, transparent 0%, var(--background) 100%);
 }
+
+/* ── Auth experience ─────────────────────────────────────── */
+
+/* soft blue ambient glow behind the auth hero */
+.auth-glow {
+  background:
+    radial-gradient(640px 360px at 12% 6%, color-mix(in srgb, var(--primary) 9%, transparent) 0%, transparent 60%),
+    radial-gradient(520px 300px at 92% 24%, color-mix(in srgb, var(--secondary-accent) 6%, transparent) 0%, transparent 58%);
+}
+
+/* premium layered shadow for the auth card */
+.shadow-premium {
+  box-shadow:
+    0 1px 2px rgba(15, 23, 42, 0.05),
+    0 12px 28px -8px rgba(15, 23, 42, 0.10),
+    0 32px 64px -24px rgba(15, 23, 42, 0.08);
+}
+
+/* soft shadow for floating hero cards */
+.shadow-float {
+  box-shadow: 0 6px 24px -10px rgba(15, 23, 42, 0.14);
+}
+
+/* gentle ambient float for decorative hero cards */
+@keyframes auth-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+/* card entrance */
+@keyframes auth-enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .auth-float { animation: auth-float 7.5s ease-in-out infinite; }
+  .auth-float-slow { animation: auth-float 9.5s ease-in-out infinite; }
+  .auth-enter { animation: auth-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+}
