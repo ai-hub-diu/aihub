@@ -1,22 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Star, ShieldCheck } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Magnetic } from "@/components/magnetic";
 import { HeroEcosystem } from "@/components/hero-ecosystem";
 import { useHeroEntrance } from "@/lib/animations/hero";
 import { useHeroScrollOut } from "@/lib/animations/hero-scroll";
 
-const headlineLines = ["Learn AI.", "Build What Matters."];
-
 export function Hero() {
   const ref = useHeroEntrance<HTMLElement>();
   useHeroScrollOut(ref);
 
   return (
-    <section ref={ref} className="gradient-hero dot-grid relative overflow-hidden border-b border-border">
-      <div className="container-hub grid gap-16 py-20 lg:grid-cols-2 lg:gap-8 lg:py-28">
+    <section
+      ref={ref}
+      className="gradient-hero dot-grid relative overflow-hidden border-b border-border"
+    >
+      <div className="container-hub grid min-h-[calc(100vh-4rem)] gap-12 py-16 lg:grid-cols-[1.08fr_1fr] lg:items-center lg:gap-8 lg:py-20">
+        {/* left: message + CTA */}
         <div data-hero-copy className="flex flex-col justify-center">
           <span
             data-hero-eyebrow
@@ -26,23 +28,34 @@ export function Hero() {
             Daffodil AI Production Hub
           </span>
 
-          <h1 className="mt-6 text-balance text-5xl font-semibold leading-[1.02] tracking-tight sm:text-6xl lg:text-[4.25rem]">
-            {headlineLines.map((line) => (
-              <span key={line} className="block overflow-hidden">
-                <span data-hero-line className="block">
-                  {line}
-                </span>
+          <h1 className="mt-6 text-balance text-5xl font-semibold leading-[0.98] tracking-[-0.025em] sm:text-[3.5rem] lg:text-[4.75rem]">
+            <span className="block overflow-hidden">
+              <span data-hero-line className="block">
+                Learn <span className="text-primary">AI</span>.
               </span>
-            ))}
+            </span>
+            <span className="block overflow-hidden">
+              <span data-hero-line className="block">
+                Build What
+              </span>
+            </span>
+            <span className="block overflow-hidden">
+              <span data-hero-line className="block">
+                Matters.
+              </span>
+            </span>
           </h1>
 
-          <p data-hero-desc className="mt-6 max-w-md text-lg text-muted-foreground">
+          <p
+            data-hero-desc
+            className="mt-6 max-w-md text-lg leading-relaxed text-muted-foreground lg:text-xl"
+          >
             Practical learning connected to real-world work.
           </p>
 
           <div data-hero-cta className="mt-9 flex flex-wrap items-center gap-5">
             <Magnetic>
-              <Button size="lg" className="group" asChild>
+              <Button size="lg" className="group rounded-full" asChild>
                 <Link href="/courses">
                   Explore the Hub
                   <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
@@ -51,50 +64,17 @@ export function Hero() {
             </Magnetic>
             <Link
               href="/industry"
-              className="text-sm font-medium text-foreground transition-colors hover:text-primary"
+              className="group inline-flex items-center gap-1 text-sm font-medium text-foreground transition-colors hover:text-primary"
             >
-              For Industry →
+              For Industry
+              <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1" />
             </Link>
           </div>
         </div>
 
-        <div data-hero-visual className="relative w-full lg:h-[480px]">
-          {/* 3D ecosystem only ever renders at lg+ (see HeroEcosystem); the
-              card layout below switches from a plain mobile stack to the
-              absolute "framing" composition at the same breakpoint so
-              there's no empty reserved space on phones/tablets. */}
+        {/* right: AIHUB ecosystem */}
+        <div data-hero-visual className="relative w-full">
           <HeroEcosystem />
-
-          <div className="flex flex-col gap-4 lg:block">
-            {/* Courses — top-left, mirrors the "Courses" hub node */}
-            <div className="w-full rounded-xl border border-border bg-card/95 p-4 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm lg:absolute lg:left-0 lg:top-2 lg:w-64">
-              <div className="flex items-center justify-between">
-                <span className="tag-mono text-muted-foreground">Course</span>
-                <span className="flex items-center gap-1 text-xs text-muted-foreground">
-                  <Star className="h-3 w-3 fill-primary text-primary" /> 4.9
-                </span>
-              </div>
-              <p className="mt-2 text-sm font-semibold">AI Engineering with Python</p>
-              <p className="tag-mono mt-2 text-muted-foreground">08 Weeks · Intermediate</p>
-            </div>
-
-            {/* Jobs — right edge, mirrors the "Jobs" hub node */}
-            <div className="w-full rounded-xl border border-border bg-card/95 p-4 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm lg:absolute lg:right-0 lg:top-[38%] lg:w-64 lg:-translate-y-1/2">
-              <div className="flex items-center justify-between">
-                <span className="tag-mono text-muted-foreground">Job</span>
-                <span className="tag-mono text-secondary-accent">Remote</span>
-              </div>
-              <p className="mt-2 text-sm font-semibold">AI/ML Intern</p>
-              <p className="tag-mono mt-2 text-muted-foreground">Python · LLM · AWS</p>
-            </div>
-
-            {/* Projects / verified skill — bottom-left, mirrors the "Projects" hub node */}
-            <div className="flex w-fit items-center gap-2 rounded-xl border border-border bg-card/95 px-4 py-3 shadow-[0_1px_0_rgba(0,0,0,0.02)] backdrop-blur-sm lg:absolute lg:bottom-2 lg:left-10">
-              <ShieldCheck className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium">Skill Verified</span>
-              <span className="tag-mono text-muted-foreground">Python</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>

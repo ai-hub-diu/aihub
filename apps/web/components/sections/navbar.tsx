@@ -32,16 +32,11 @@ export function Navbar() {
       className={cn(
         "sticky top-0 z-40 border-b transition-all duration-300",
         scrolled
-          ? "border-border bg-background/75 backdrop-blur-md"
+          ? "border-border bg-background/80 backdrop-blur-md shadow-[0_2px_12px_-8px_rgba(0,0,0,0.12)]"
           : "border-transparent bg-transparent"
       )}
     >
-      <div
-        className={cn(
-          "container-hub flex items-center justify-between transition-[height] duration-300",
-          scrolled ? "h-14" : "h-16"
-        )}
-      >
+      <div className="container-hub flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2">
           <Image src="/logo-mark.png" alt="" width={22} height={22} priority />
           <span className="text-[13px] font-semibold tracking-tight">DAFFODIL AI HUB</span>
@@ -59,7 +54,7 @@ export function Navbar() {
           <Button variant="ghost" size="sm" asChild>
             <Link href="/login">Sign In</Link>
           </Button>
-          <Button size="sm" asChild>
+          <Button size="sm" className="rounded-full shadow-sm" asChild>
             <Link href="/signup" className="group">
               Get Started
               <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />

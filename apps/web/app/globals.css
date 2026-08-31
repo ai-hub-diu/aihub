@@ -47,7 +47,7 @@ body {
 }
 
 .container-hub {
-  max-width: 76rem;
+  max-width: 80rem;
   margin-inline: auto;
   padding-inline: 1.25rem;
 }
@@ -124,4 +124,38 @@ body {
   .auth-float { animation: auth-float 7.5s ease-in-out infinite; }
   .auth-float-slow { animation: auth-float 9.5s ease-in-out infinite; }
   .auth-enter { animation: auth-enter 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+}
+
+/* ── Hero ecosystem ─────────────────────────────────────── */
+
+/* concentrated blue glow behind the ecosystem core */
+.ecosystem-glow {
+  background:
+    radial-gradient(170px 170px at 50% 50%, color-mix(in srgb, var(--primary) 13%, transparent) 0%, transparent 70%),
+    radial-gradient(300px 300px at 50% 50%, color-mix(in srgb, var(--primary) 6%, transparent) 0%, transparent 65%);
+}
+
+/* satellite node pulse */
+@keyframes node-pulse {
+  0%, 100% { opacity: 0.7; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+/* central hub breathe + expanding ring */
+@keyframes hub-breathe {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(29, 79, 216, 0.16), 0 10px 30px -8px rgba(29, 79, 216, 0.32); }
+  50% { box-shadow: 0 0 0 10px rgba(29, 79, 216, 0), 0 14px 38px -6px rgba(29, 79, 216, 0.48); }
+}
+
+/* connector line flow */
+@keyframes line-flow {
+  to { stroke-dashoffset: -16; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .anim-node { animation: node-pulse 4s ease-in-out infinite; }
+  .anim-node-2 { animation: node-pulse 4s ease-in-out infinite 0.8s; }
+  .anim-node-3 { animation: node-pulse 4s ease-in-out infinite 1.6s; }
+  .anim-hub { animation: hub-breathe 5s ease-in-out infinite; }
+  .anim-line { stroke-dasharray: 1.5 2.5; animation: line-flow 1.6s linear infinite; }
 }

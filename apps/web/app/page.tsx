@@ -1,4 +1,5 @@
 import { Hero } from "@/components/sections/hero";
+import { HeroValueStrip } from "@/components/sections/hero-value-strip";
 import { PlatformStatement } from "@/components/sections/platform-statement";
 import { ChooseYourMove } from "@/components/sections/choose-your-move";
 import { HowItWorks } from "@/components/sections/how-it-works";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <HeroValueStrip />
       <PlatformStatement />
       <ChooseYourMove />
       <HowItWorks />
