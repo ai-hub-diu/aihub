@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Star, Clock, ShieldCheck, Users } from "lucide-react";
+import { Star, Clock, ShieldCheck, Users, ArrowRight } from "lucide-react";
 import { Course } from "@/data/courses";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 export function CourseCard({ course }: { course: Course }) {
   return (
     <Link href={`/courses/${course.id}`} className="group block h-full">
-      <Card className="flex h-full flex-col overflow-hidden transition-all duration-200 group-hover:-translate-y-1 group-hover:shadow-lg">
+      <Card className="flex h-full flex-col overflow-hidden transition-all duration-200 ease-out group-hover:-translate-y-1.5 group-hover:border-foreground/20 group-hover:shadow-lg">
         <div
           className={`relative h-32 w-full bg-gradient-to-br ${course.color} transition-transform duration-300 group-hover:scale-[1.03]`}
         >
@@ -41,8 +41,9 @@ export function CourseCard({ course }: { course: Course }) {
             ) : (
               <span />
             )}
-            <span className="text-sm font-semibold text-primary underline-offset-4 group-hover:underline">
+            <span className="flex items-center gap-1 text-sm font-semibold text-primary">
               View Course
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
             </span>
           </div>
         </div>

@@ -1,20 +1,39 @@
 "use client";
 
-import { useState } from "react";
-import { CheckCircle2, XCircle } from "lucide-react";
+import { useRef, useState } from "react";
+import { CheckCircle2, XCircle, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { findCertificate } from "@/data/certificates";
+import { getGsap } from "@/lib/animations/gsap";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
+
+type Status = "idle" | "checking" | "found" | "not-found";
 
 export function CertificateVerification() {
   const [id, setId] = useState("");
-  const [result, setResult] = useState<"idle" | "found" | "not-found">("idle");
+  const [status, setStatus] = useState<Status>("idle");
+  const resultRef = useRef<HTMLDivElement | null>(null);
+  const reduced = useReducedMotion();
 
   function handleVerify(e: React.FormEvent) {
     e.preventDefault();
-    const cert = findCertificate(id);
-    setResult(cert ? "found" : "not-found");
+    setStatus("checking");
+    window.setTimeout(() => {
+      const cert = findCertificate(id);
+      setStatus(cert ? "found" : "not-found");
+      requestAnimationFrame(() => {
+        if (resultRef.current && !reduced) {
+          const { gsap } = getGsap();
+          gsap.fromTo(
+            resultRef.current,
+            { opacity: 0, y: 10 },
+            { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" }
+          );
+        }
+      });
+    }, 550);
   }
 
   const cert = findCertificate(id);
@@ -29,11 +48,19 @@ export function CertificateVerification() {
           onChange={(e) => setId(e.target.value)}
           placeholder="DAI-2026-AI-000123"
         />
-        <Button type="submit">Verify Certificate</Button>
+        <Button type="submit" disabled={status === "checking"}>
+          {status === "checking" ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" /> Checking...
+            </>
+          ) : (
+            "Verify Certificate"
+          )}
+        </Button>
       </form>
 
-      {result === "found" && cert && (
-        <div className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+      {status === "found" && cert && (
+        <div ref={resultRef} className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4">
           <p className="flex items-center gap-2 text-sm font-semibold text-emerald-700">
             <CheckCircle2 className="h-4 w-4" /> VERIFIED
           </p>
@@ -44,8 +71,8 @@ export function CertificateVerification() {
         </div>
       )}
 
-      {result === "not-found" && (
-        <div className="mt-5 rounded-xl border border-red-200 bg-red-50 p-4">
+      {status === "not-found" && (
+        <div ref={resultRef} className="mt-5 rounded-xl border border-red-200 bg-red-50 p-4">
           <p className="flex items-center gap-2 text-sm font-semibold text-red-700">
             <XCircle className="h-4 w-4" /> No matching certificate found
           </p>

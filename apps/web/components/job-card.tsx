@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, Clock } from "lucide-react";
+import { MapPin, Clock, ArrowRight } from "lucide-react";
 import { Job } from "@/data/jobs";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -7,11 +7,11 @@ import { Card } from "@/components/ui/card";
 export function JobCard({ job }: { job: Job }) {
   return (
     <Link href={`/jobs/${job.id}`} className="group block h-full">
-      <Card className="flex h-full flex-col p-5 transition-all duration-200 group-hover:-translate-y-1 group-hover:shadow-lg">
+      <Card className="flex h-full flex-col p-5 transition-all duration-200 ease-out group-hover:-translate-y-1.5 group-hover:border-foreground/20 group-hover:shadow-lg">
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-3">
             <span
-              className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-semibold text-white ${job.companyColor}`}
+              className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-sm font-semibold text-white transition-transform duration-200 group-hover:scale-105 ${job.companyColor}`}
             >
               {job.companyInitial}
             </span>
@@ -27,7 +27,11 @@ export function JobCard({ job }: { job: Job }) {
 
         <div className="mt-4 flex flex-wrap gap-1.5">
           {job.skills.map((s) => (
-            <Badge key={s} variant="outline">
+            <Badge
+              key={s}
+              variant="outline"
+              className="transition-colors duration-200 group-hover:border-foreground/30 group-hover:bg-muted"
+            >
               {s}
             </Badge>
           ))}
@@ -45,8 +49,9 @@ export function JobCard({ job }: { job: Job }) {
 
         <div className="mt-auto flex items-center justify-between pt-5">
           <span className="text-sm font-semibold">{job.compensation}</span>
-          <span className="text-sm font-semibold text-primary underline-offset-4 group-hover:underline">
+          <span className="flex items-center gap-1 text-sm font-semibold text-primary">
             View Details
+            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-1" />
           </span>
         </div>
       </Card>

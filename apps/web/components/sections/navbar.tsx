@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const links = [
   { href: "/courses", label: "Courses" },
@@ -15,9 +16,26 @@ const links = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 8);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/80 backdrop-blur-md">
+    <header
+      className={cn(
+        "sticky top-0 z-40 border-b transition-colors duration-300",
+        scrolled
+          ? "border-border bg-background/80 backdrop-blur-md"
+          : "border-transparent bg-transparent"
+      )}
+    >
       <div className="container-hub flex h-16 items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-semibold">
           <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">

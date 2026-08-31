@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { jobs } from "@/data/jobs";
 import { JobCard } from "@/components/job-card";
 import { SearchBar } from "@/components/search-bar";
+import { ScrollReveal } from "@/components/scroll-reveal";
 
 export function JobGrid({ limit }: { limit?: number }) {
   const [query, setQuery] = useState("");
@@ -26,20 +27,29 @@ export function JobGrid({ limit }: { limit?: number }) {
 
   return (
     <div>
-      <SearchBar
-        query={query}
-        onQueryChange={setQuery}
-        category={category}
-        onCategoryChange={setCategory}
-        type={type}
-        onTypeChange={setType}
-      />
+      <ScrollReveal delay={0.05}>
+        <SearchBar
+          query={query}
+          onQueryChange={setQuery}
+          category={category}
+          onCategoryChange={setCategory}
+          type={type}
+          onTypeChange={setType}
+        />
+      </ScrollReveal>
 
-      <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <ScrollReveal
+        stagger=".job-card-item"
+        y={20}
+        delay={0.15}
+        className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+      >
         {visible.map((job) => (
-          <JobCard key={job.id} job={job} />
+          <div key={job.id} className="job-card-item">
+            <JobCard job={job} />
+          </div>
         ))}
-      </div>
+      </ScrollReveal>
 
       {visible.length === 0 && (
         <p className="mt-10 text-center text-sm text-muted-foreground">
