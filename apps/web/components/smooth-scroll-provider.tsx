@@ -19,8 +19,10 @@ export function SmoothScrollProvider({ children }: { children: ReactNode }) {
 
     const { gsap } = getGsap();
 
+    // gsap.ticker reports elapsed time in seconds; Lenis expects a
+    // millisecond timestamp comparable to performance.now().
     function raf(time: number) {
-      lenis.raf(time);
+      lenis.raf(time * 1000);
     }
     gsap.ticker.add(raf);
     gsap.ticker.lagSmoothing(0);
