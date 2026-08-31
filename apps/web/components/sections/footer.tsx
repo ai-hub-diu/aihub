@@ -54,6 +54,7 @@ export function Footer() {
         <div className="col-span-2 flex flex-col gap-3 lg:col-span-1">
           <Link href="/" className="flex items-center gap-2 font-semibold">
             <Image src="/logo-mark.png" alt="" width={26} height={26} />
+            <span className="text-[13px] font-semibold tracking-tight">DAFFODIL AI HUB</span>
           </Link>
           <p className="text-sm text-muted-foreground">Learn. Work. Build. Grow.</p>
         </div>
