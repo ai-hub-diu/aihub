@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 const steps = ["Learn", "Verify", "Work", "Build", "Grow"];
@@ -6,11 +5,6 @@ const steps = ["Learn", "Verify", "Work", "Build", "Grow"];
 export function AuthSidePanel() {
   return (
     <div className="gradient-hero dot-grid hidden flex-col justify-between border-r border-border p-10 lg:flex">
-      <div className="flex items-center gap-2">
-        <Image src="/logo-mark.png" alt="" width={22} height={22} />
-        <span className="text-[13px] font-semibold tracking-tight">DAFFODIL AI HUB</span>
-      </div>
-
       <div>
         <span className="tag-mono text-primary">One account</span>
         <h2 className="text-balance mt-3 text-3xl font-semibold leading-tight tracking-tight">
